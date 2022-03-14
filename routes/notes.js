@@ -1,10 +1,11 @@
-const notes = require('express').Router();
-const { v4: uuidv4 } = require('uuid');
+const express = require('express');
+const notes = express.Router();
+const uuid = require('../helpers/uuid.js');
 const {
   readFromFile,
   readAndAppend,
   writeToFile,
-} = require('../helpers/fsUtils');
+} = require('../helpers/fsUtils.js');
 
 // GET Route for retrieving all the notes
 notes.get('/', (req, res) => {
@@ -12,32 +13,34 @@ notes.get('/', (req, res) => {
 });
 
 // GET Route for a specific tip
-notes.get('/:note_id', (req, res) => {
-  const noteId = req.params.note_id;
-  readFromFile('./db/db.json')
-    .then((data) => JSON.parse(data))
-    .then((json) => {
-      const result = json.filter((title) => title.note_id === noteId);
-      return result.length > 0
-        ? res.json(result)
-        : res.json('No note with that ID');
-    });
-});
+// notes.get('/:id', (req, res) => {
+//   const noteId = req.params.id;
+//   readFromFile('./db/db.json')
+//     .then((data) => JSON.parse(data))
+//     .then((json) => {
+//       const result = json.filter((title) => title.id === noteId);
+//       return result.length > 0
+//         ? res.json(result)
+//         : res.json('No note with that ID');
+//     });
+// });
 
 // DELETE Route for a specific tip
-notes.delete('/:note_id', (req, res) => {
-  const noteId = req.params.note_id;
+notes.delete('/:id', (req, res) => {
+  const noteId = req.params.id;
+  const noteTitle = req.params.title;
+
   readFromFile('./db/db.json')
     .then((data) => JSON.parse(data))
     .then((json) => {
       // Make a new array of all notes except the one with the ID provided in the URL
-      const result = json.filter((title) => title.note_id !== noteId);
+      const result = json.filter((data) => data.id !== noteId);
 
       // Save that array to the filesystem
       writeToFile('./db/db.json', result);
 
       // Respond to the DELETE request
-      res.json(`Note: ${title} has been deleted 🗑️`);
+      res.json(`Note: ${noteTitle} has been deleted 🗑️`);
     });
 });
 
@@ -51,7 +54,7 @@ notes.post('/', (req, res) => {
     const newNote = {
       title,
       text,
-      note_id: uuidv4(),
+      id: uuid(),
     };
 
     readAndAppend(newNote, './db/db.json');

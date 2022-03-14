@@ -2,12 +2,21 @@
 Bootcamp Week 11: Homework
 # 11 Express.js: Note Taker
 
-## Your Task
+## Table of Contents 
 
-Your assignment is to modify starter code to create an application called Note Taker that can be used to write and save notes. This application will use an Express.js back end and will save and retrieve note data from a JSON file.
+- [About Task](#about-task)
+- [User Story](#user-story)
+- [Installation Guide](#installation-guide)
+- [My Solution](#my-solution)
+- [Test](#test)
+- [Samples](#samples)
+- [Questions](#questions)
 
-The application’s front end has already been created. It's your job to build the back end, connect the two, and then deploy the entire application to Heroku.
+## About Task
 
+This assignment is to modify starter code to create an application called Note Taker that can be used to write and save notes. This application will use an Express.js back end and will save and retrieve note data from a JSON file. It's your job to build the back end, connect the two, and then deploy the entire application to Heroku.
+
+> **Note**: The application’s front end was done. 
 
 ## User Story
 
@@ -17,8 +26,47 @@ I WANT to be able to write and save notes
 SO THAT I can organize my thoughts and keep track of tasks I need to complete
 ```
 
+## Installation Guide
 
-## Acceptance Criteria
+This application uses Express.js to build up the back end. It is required to install all necessary dependencies.
+
+First clone the repository then run the following command at the root directory to install the dependencies:
+
+```
+npm i
+```
+    
+The application will be invoked by using the following command:
+    
+```
+node server.js
+```
+
+A directory structure looks like in the following way:
+
+```
+.
+├── __db__/                
+│   └── db.json                 // db - an array of objects saves notes
+├── __helpers__/            
+│   ├── fsUtils.js              // module reads, writes and appends file
+│   └── uuid.js                 // module creates a random id 
+├── __public__/                 // frond end
+|   ├── __assets__/            
+│   |      ├── css/style.css    
+│   |      └── js/index.js       
+│   ├── index.html              // homepage
+│   └── notes.html              
+├── __routes__/            
+│   ├── index.js                // default route
+│   └── notes.js                // end route: /api/notes 
+├── .gitignore                  // indicates which folders and files Git should ignore
+└── package.json   
+└── README.md           
+└── server.js                   // runs the application
+```
+
+## My Solution
 
 ```
 GIVEN a note-taking application
@@ -35,16 +83,6 @@ THEN that note appears in the right-hand column
 WHEN I click on the Write icon in the navigation at the top of the page
 THEN I am presented with empty fields to enter a new note title and the note’s text in the right-hand column
 ```
-
-
-## Mock-Up
-
-The following images show the web application's appearance and functionality:
-
-![Existing notes are listed in the left-hand column with empty fields on the right-hand side for the new note’s title and text.](./Assets/11-express-homework-demo-01.png)
-
-![Note titled “Balance accounts” reads, “Balance account books by end of day Monday,” with other notes listed on the left.](./Assets/11-express-homework-demo-02.png)
-
 
 ## Getting Started
 
@@ -69,64 +107,14 @@ You haven’t learned how to handle DELETE requests, but this application offers
 
 * `DELETE /api/notes/:id` should receive a query parameter that contains the id of a note to delete. To delete a note, you'll need to read all notes from the `db.json` file, remove the note with the given `id` property, and then rewrite the notes to the `db.json` file.
 
+### Screenshots 
 
-## Grading Requirements
+The following image shows the generated HTML’s appearance: ![HTML webpage titled “Developer Team” features five boxes listing employee names, titles, and other key info.](./images/team-profile-generator.png)
 
-This homework is graded based on the following criteria: 
+The following image shows the inputs from the command line in Terminal: ![User Input](./images/command-line-input.png)
 
+The following image shows this application's test results in Terminal: ![User Input](./images/team-profile-test.png)
 
-### Technical Acceptance Criteria: 40%
+## Questions
 
-* Satisfies all of the preceding acceptance criteria plus the following:
-
-  * Application front end must connect to an Express.js back end.
-
-  * Application back end must store notes that have a unique id in a JSON file.
-
-  * Application must be deployed to Heroku.
-
-
-### Deployment: 36%
-
-* Application deployed at live URL.
-
-* Application loads with no errors.
-
-* Application GitHub URL submitted.
-
-* GitHub repository contains application code.
-
-
-### Application Quality: 11%
-
-* Application console is free of errors.
-
-
-### Repository Quality: 13%
-
-* Repository has a unique name.
-
-* Repository follows best practices for file structure and naming conventions.
-
-* Repository follows best practices for class/id naming conventions, indentation, quality comments, etc.
-
-* Repository contains multiple descriptive commit messages.
-
-* Repository contains quality README file with description, screenshot, and link to deployed application.
-
-
-### Bonus: +10 Points
-
-* Application allows users to delete notes.
-
-
-## Review
-
-You are required to submit BOTH of the following for review:
-
-* The URL of the functional, deployed application.
-
-* The URL of the GitHub repository, with a unique name and a README describing the project.
-
-- - -
-© 2022 Trilogy Education Services, LLC, a 2U, Inc. brand. Confidential and Proprietary. All Rights Reserved.
+If you have any questions about the repo, open an issue or contact me directly at naraamtm@gmail.com. Here is a link to this application repo on [Heroku](https://github.com/Nara1469/command-line-team-profile).
