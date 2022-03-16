@@ -8,13 +8,13 @@ Bootcamp Week 11: Homework
 - [User Story](#user-story)
 - [Installation Guide](#installation-guide)
 - [My Solution](#my-solution)
-- [Test](#test)
 - [Samples](#samples)
+- [Live](#live)
 - [Questions](#questions)
 
 ## About Task
 
-This assignment is to modify starter code to create an application called Note Taker that can be used to write and save notes. This application will use an Express.js back end and will save and retrieve note data from a JSON file. It's your job to build the back end, connect the two, and then deploy the entire application to Heroku.
+This assignment is to modify starter code to create an application called Note Taker that can be used to write and save notes. This application will use an Express.js back end and will save and retrieve note data from a JSON file. My task is to build the back end, connect the two, and then deploy the entire application to Heroku.
 
 > **Note**: The application’s front end was done. 
 
@@ -109,12 +109,12 @@ You haven’t learned how to handle DELETE requests, but this application offers
 
 ### Screenshots 
 
-The following image shows the generated HTML’s appearance: ![HTML webpage titled “Developer Team” features five boxes listing employee names, titles, and other key info.](./images/team-profile-generator.png)
+The following image shows the deployed HTML’s appearance: ![Heroku](./helpers/note-taker-application-heroku.png)
 
-The following image shows the inputs from the command line in Terminal: ![User Input](./images/command-line-input.png)
+## Live
 
-The following image shows this application's test results in Terminal: ![User Input](./images/team-profile-test.png)
+This application is deployed to Heroku.com. Here is a link to the deployed website. [Heroku](https://desolate-temple-31076.herokuapp.com/notes)
 
 ## Questions
 
-If you have any questions about the repo, open an issue or contact me directly at naraamtm@gmail.com. Here is a link to this application repo on [Heroku](https://github.com/Nara1469/command-line-team-profile).
+If you have any questions about the repo, open an issue or contact me directly at naraamtm@gmail.com. Here is a link to this application repo on [Github](https://github.com/Nara1469/note-taker-with-express).
