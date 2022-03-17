@@ -1,5 +1,7 @@
 # note-taker-with-express
+
 Bootcamp Week 11: Homework
+
 # 11 Express.js: Note Taker
 
 ## Table of Contents 
@@ -14,9 +16,19 @@ Bootcamp Week 11: Homework
 
 ## About Task
 
-This assignment is to modify starter code to create an application called Note Taker that can be used to write and save notes. This application will use an Express.js back end and will save and retrieve note data from a JSON file. My task is to build the back end, connect the two, and then deploy the entire application to Heroku.
+This assignment is to modify the starter code to create an application called "Note Taker" that can be used to write and save notes. This application will use an Express.js back end and will save and retrieve note data from a JSON file. My task is to build the back end, connect the two, and then deploy the entire application to Heroku. 
 
 > **Note**: The application’s front end was done. 
+
+Upon launching the Note Taker application, a landing page with a link to a notes page will be uploaded.
+
+The notes page will look like with existing notes listed in the left-hand column, plus empty fields to enter a new note title and the note’s text in the right-hand column.
+
+If you enter a new note title and the note’s text, a Save icon appears in the navigation at the top of the page. When you click on the Save icon, the new note you have entered is saved and appears in the left-hand column with the other existing notes.
+
+All existing note in the list is shown in the left-hand column. Any note is chosen that note appears in the right-hand column.
+
+The Write icon in the navigation at the top of the page is clicked, then empty fields to enter a new note title and the note’s text in the right-hand column will appear.
 
 ## User Story
 
@@ -50,7 +62,7 @@ A directory structure looks like in the following way:
 │   └── db.json                 // db - an array of objects saves notes
 ├── __helpers__/            
 │   ├── fsUtils.js              // module reads, writes and appends file
-│   └── uuid.js                 // module creates a random id 
+│   └── uuid.js                 // module creates a unique id 
 ├── __public__/                 // frond end
 |   ├── __assets__/            
 │   |      ├── css/style.css    
@@ -61,51 +73,28 @@ A directory structure looks like in the following way:
 │   ├── index.js                // default route
 │   └── notes.js                // end route: /api/notes 
 ├── .gitignore                  // indicates which folders and files Git should ignore
-└── package.json   
-└── README.md           
+├── package.json                // app dependencies: expressJS, uuid packages
+├── README.md           
 └── server.js                   // runs the application
 ```
 
 ## My Solution
 
-```
-GIVEN a note-taking application
-WHEN I open the Note Taker
-THEN I am presented with a landing page with a link to a notes page
-WHEN I click on the link to the notes page
-THEN I am presented with a page with existing notes listed in the left-hand column, plus empty fields to enter a new note title and the note’s text in the right-hand column
-WHEN I enter a new note title and the note’s text
-THEN a Save icon appears in the navigation at the top of the page
-WHEN I click on the Save icon
-THEN the new note I have entered is saved and appears in the left-hand column with the other existing notes
-WHEN I click on an existing note in the list in the left-hand column
-THEN that note appears in the right-hand column
-WHEN I click on the Write icon in the navigation at the top of the page
-THEN I am presented with empty fields to enter a new note title and the note’s text in the right-hand column
-```
+On the back end, the application includes a `db.json` file that will be used to store and retrieve notes using the `fs` module. Data is stored as an array of objects in db.json file. The "id" property is added in the object to access with a unique value. 
 
-## Getting Started
+The following HTML routes created in ./routes directory:
 
-On the back end, the application should include a `db.json` file that will be used to store and retrieve notes using the `fs` module.
+* `GET /notes` should return the `notes.html` file. !(notes.js)
 
-The following HTML routes should be created:
+* `GET *` should return the `index.html` file. !(index.js)
 
-* `GET /notes` should return the `notes.html` file.
+The following API routes were used:
 
-* `GET *` should return the `index.html` file.
+* `GET /api/notes` read the `db.json` file and returns all saved notes as JSON.
 
-The following API routes should be created:
+* `POST /api/notes` receives a new note to save on the request body, adds it to the `db.json` file, and then returns the new note to the client. 
 
-* `GET /api/notes` should read the `db.json` file and return all saved notes as JSON.
-
-* `POST /api/notes` should receive a new note to save on the request body, add it to the `db.json` file, and then return the new note to the client. You'll need to find a way to give each note a unique id when it's saved (look into npm packages that could do this for you).
-
-
-## Bonus
-
-You haven’t learned how to handle DELETE requests, but this application offers that functionality on the front end. As a bonus, try to add the DELETE route to the application using the following guideline:
-
-* `DELETE /api/notes/:id` should receive a query parameter that contains the id of a note to delete. To delete a note, you'll need to read all notes from the `db.json` file, remove the note with the given `id` property, and then rewrite the notes to the `db.json` file.
+* `DELETE /api/notes/:id` receives a query parameter that contains the id of a note to delete. To delete a note, the app needs to read all notes from the `db.json` file, remove the note with the given `id` property, and then rewrite the notes to the `db.json` file.
 
 ### Screenshots 
 
